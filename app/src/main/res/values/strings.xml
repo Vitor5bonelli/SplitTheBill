@@ -1,8 +1,8 @@
 <resources>
     <string name="app_name">SplitTheBill</string>
-    <string name="expense">expense</string>
-    <string name="name">name</string>
+    <string name="expense">Expense</string>
+    <string name="name">Name</string>
     <string name="description">Description</string>
     <string name="save">Save</string>
-    <string name="value">value</string>
+    <string name="value">Value</string>
 </resources>
