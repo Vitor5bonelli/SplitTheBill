@@ -9,7 +9,7 @@ import androidx.room.Update
 @Dao
 interface FriendDAO {
     @Insert
-    fun create(person: Friend)
+    fun create(friend: Friend)
 
     @Query("SELECT * FROM Friend WHERE id = :id")
     fun findOne(id: Int): Friend?
@@ -18,8 +18,8 @@ interface FriendDAO {
     fun findAll(): MutableList<Friend>
 
     @Update
-    fun update(person: Friend) :Int
+    fun update(friend: Friend):Int
 
     @Delete
-    fun delete(person: Friend):Int
+    fun delete(friend: Friend):Int
 }
