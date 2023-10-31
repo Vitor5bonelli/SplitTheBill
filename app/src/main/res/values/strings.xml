@@ -5,4 +5,6 @@
     <string name="description">Description</string>
     <string name="save">Save</string>
     <string name="value">Value</string>
+    <string name="add_friend">Add Friend</string>
+    <string name="split_the_bill">Split the Bill!</string>
 </resources>
