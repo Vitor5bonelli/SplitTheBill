@@ -2,4 +2,7 @@
     <string name="app_name">SplitTheBill</string>
     <string name="expense">expense</string>
     <string name="name">name</string>
+    <string name="description">Description</string>
+    <string name="save">Save</string>
+    <string name="value">value</string>
 </resources>
