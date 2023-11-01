@@ -32,7 +32,6 @@ class FriendActivity : BaseActivity() {
                 with(_receivedFriend){
                     nameEt.setText(name)
                     valueEt.setText(value.toString())
-                    descriptionEt.setText(description)
                 }
             }
         }
@@ -41,16 +40,52 @@ class FriendActivity : BaseActivity() {
         with(afb){
             nameEt.isEnabled = !viewFriend
             valueEt.isEnabled = !viewFriend
-            descriptionEt.isEnabled = !viewFriend
+            description1Et.isEnabled = !viewFriend
+            cost1Et.isEnabled = !viewFriend
+            description2Et.isEnabled = !viewFriend
+            cost2Et.isEnabled = !viewFriend
+            description3Et.isEnabled = !viewFriend
+            cost3Et.isEnabled = !viewFriend
             saveBt.visibility = if(viewFriend) View.GONE else View.VISIBLE
         }
 
         afb.saveBt.setOnClickListener(){
+
+            val totalExpense = 0
+
+            if(afb.cost1Et.text.toString() != ""){
+                totalExpense.plus(afb.cost1Et.text.toString().toInt())
+            }
+
+            if(afb.cost2Et.text.toString() != ""){
+                totalExpense.plus(afb.cost2Et.text.toString().toInt())
+            }
+
+            if(afb.cost3Et.text.toString() != ""){
+                totalExpense.plus(afb.cost3Et.text.toString().toInt())
+            }
+
+
+            var textForItem = ""
+
+            if(afb.description1Et.text.toString() != "") {
+                textForItem.plus(afb.description1Et.text.toString() + ": " + afb.cost1Et.text.toString() + ", ")
+            }
+
+            if(afb.description2Et.text.toString() != "") {
+                textForItem.plus(afb.description2Et.text.toString() + ": " + afb.cost2Et.text.toString() + ", ")
+            }
+
+            if(afb.description3Et.text.toString() != "") {
+                textForItem.plus(afb.description2Et.text.toString() + ": " + afb.cost2Et.text.toString())
+            }
+
             val friend: Friend = Friend(
                 receivedFriend?.id,
                 afb.nameEt.text.toString(),
                 afb.valueEt.text.toString().toFloat(),
-                afb.descriptionEt.text.toString())
+                textForItem
+            )
 
             val resultIntent = Intent()
             resultIntent.putExtra(EXTRA_FRIEND, friend)

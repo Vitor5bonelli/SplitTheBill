@@ -41,16 +41,77 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:labelFor="@+id/messageEt"
-            android:text="@string/description"
-            android:textSize="20sp"/>
+            android:text="@string/item_1"
+            android:textSize="20sp"
+            android:layout_marginTop="30sp"
+            />
 
         <EditText
-            android:id="@+id/descriptionEt"
+            android:id="@+id/description1Et"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:inputType="textMultiLine"
+            android:inputType="text"
             android:gravity="top"
-            android:lines="14" />
+            android:hint="@string/description"/>
+
+        <EditText
+            android:id="@+id/cost1Et"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:inputType="numberDecimal"
+            android:gravity="top"
+            android:hint="@string/value"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:labelFor="@+id/messageEt"
+            android:text="@string/item_2"
+            android:textSize="20sp"
+            android:layout_marginTop="30sp"
+            />
+
+        <EditText
+            android:id="@+id/description2Et"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:inputType="text"
+            android:gravity="top"
+            android:hint="@string/description"/>
+
+        <EditText
+            android:id="@+id/cost2Et"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:inputType="numberDecimal"
+            android:gravity="top"
+            android:hint="@string/value"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:labelFor="@+id/messageEt"
+            android:text="@string/item_3"
+            android:textSize="20sp"
+            android:layout_marginTop="30sp"
+            />
+
+        <EditText
+            android:id="@+id/description3Et"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:inputType="text"
+            android:gravity="top"
+            android:hint="@string/description"/>
+
+        <EditText
+            android:id="@+id/cost3Et"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:inputType="numberDecimal"
+            android:gravity="top"
+            android:hint="@string/value"
+            />
     </LinearLayout>
 
     <Button

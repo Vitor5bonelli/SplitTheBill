@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.ContextMenu
 import android.view.Menu
 import android.view.MenuItem
@@ -40,7 +41,7 @@ class MainActivity : BaseActivity() {
         supportActionBar?.subtitle = "Friendlist!"
         friendController.getFriends()
 
-        amb.partyLV.adapter = friendAdapter
+        amb.mainLV.adapter = friendAdapter
 
         parl =
             registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
@@ -66,9 +67,9 @@ class MainActivity : BaseActivity() {
                     }
                 }
             }
-        registerForContextMenu(amb.partyLV)
+        registerForContextMenu(amb.mainLV)
 
-        amb.partyLV.setOnItemClickListener(object: AdapterView.OnItemClickListener{
+        amb.mainLV.setOnItemClickListener(object: AdapterView.OnItemClickListener{
             override fun onItemClick(parent: AdapterView<*>?, view: View?, position: Int, id: Long){
                 val person = friendList[position]
                 val personIntent = Intent(this@MainActivity, FriendActivity::class.java)
@@ -77,7 +78,6 @@ class MainActivity : BaseActivity() {
                 parl.launch(personIntent)
             }
         })
-
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -111,22 +111,21 @@ class MainActivity : BaseActivity() {
 
     override fun onContextItemSelected(item: MenuItem): Boolean {
         val position =(item.menuInfo as AdapterView.AdapterContextMenuInfo).position
-        val person = friendList[position]
+        val friend = friendList[position]
         return when(item.itemId){
             R.id.editPersonMi -> {
-                val person = friendList[position]
-                val personIntent = Intent(this, FriendActivity::class.java)
-                personIntent.putExtra(EXTRA_FRIEND, person)
-                parl.launch(personIntent)
+                val friend = friendList[position]
+                val friendIntent = Intent(this, FriendActivity::class.java)
+                friendIntent.putExtra(EXTRA_FRIEND, friend)
+                parl.launch(friendIntent)
                 true
             }
             R.id.removePersonMi -> {
 
                 friendList.removeAt(position)
-                friendController.deleteFriend(person)
+                friendController.deleteFriend(friend)
                 friendAdapter.notifyDataSetChanged()
                 Toast.makeText(this, "Friend Removed!", Toast.LENGTH_SHORT).show()
-
                 true
             }
             else -> false
@@ -137,7 +136,5 @@ class MainActivity : BaseActivity() {
         friendList.clear()
         friendList.addAll(_friendList)
         friendAdapter.notifyDataSetChanged()
-
     }
-
 }
