@@ -12,5 +12,8 @@ class SplitTheBillActivity : BaseActivity(){
     }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setContentView(stba.root)
+        supportActionBar?.subtitle = "Friendlist!"
+
     }
 }

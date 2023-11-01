@@ -69,20 +69,26 @@ class MainActivity : BaseActivity() {
             }
         registerForContextMenu(amb.mainLV)
 
-        amb.mainLV.setOnItemClickListener(object: AdapterView.OnItemClickListener{
-            override fun onItemClick(parent: AdapterView<*>?, view: View?, position: Int, id: Long){
-                val person = friendList[position]
-                val personIntent = Intent(this@MainActivity, FriendActivity::class.java)
-                personIntent.putExtra(EXTRA_FRIEND, person)
-                personIntent.putExtra(EXTRA_VIEW_FRIEND, true)
-                parl.launch(personIntent)
-            }
-        })
+        amb.mainLV.setOnItemClickListener { parent, view, position, id ->
+            val person = friendList[position]
+            val personIntent = Intent(this@MainActivity, FriendActivity::class.java)
+            personIntent.putExtra(EXTRA_FRIEND, person)
+            personIntent.putExtra(EXTRA_VIEW_FRIEND, true)
+            parl.launch(personIntent)
+        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.menu_main, menu)
         return true
+    }
+
+    override fun onCreateContextMenu(
+        menu: ContextMenu?,
+        v: View?,
+        menuInfo: ContextMenu.ContextMenuInfo?
+    ) {
+        menuInflater.inflate(R.menu.context_menu_main, menu)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -99,14 +105,6 @@ class MainActivity : BaseActivity() {
             }
             else ->false
         }
-    }
-
-    override fun onCreateContextMenu(
-        menu: ContextMenu?,
-        v: View?,
-        menuInfo: ContextMenu.ContextMenuInfo?
-    ) {
-        menuInflater.inflate(R.menu.context_menu_main, menu)
     }
 
     override fun onContextItemSelected(item: MenuItem): Boolean {
